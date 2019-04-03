@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<document id="7008412">
+  <s id="1">
+    <time id="T1S" value="00:00:03,000" />
+    <w id="1.1">Tell</w>
+    <w id="1.2">me</w>
+    <w id="1.3">something</w>
+    <w id="1.4">.</w>
+    <time id="T1E" value="00:00:05,000" />
+  </s>
+  <s id="2">
+    <time id="T1S" value="00:00:06,000" />
+    <w id="2.1">What</w>
+    <w id="2.2">do</w>
+    <w id="2.3">you</w>
+    <w id="2.4">know</w>
+    <w id="2.5">about</w>
+    <w id="2.6">Wakanda</w>
+    <w id="2.7">?</w>
+    <time id="T1E" value="00:00:10,000" />
+  </s>
+  <s id="3">
+    <time id="T1S" value="00:00:13,600" />
+    <w id="3.1">It</w>
+    <w id="3.2">'s</w>
+    <w id="3.3">a</w>
+    <w id="3.4">third</w>
+    <w id="3.5">world</w>
+    <w id="3.6">country</w>
+    <w id="3.7">.</w>
+    <time id="T1E" value="00:00:15,400" />
+  </s>
+  <s id="4">
+    <time id="T1S" value="00:00:15,400" />
+    <w id="4.1">Textiles</w>
+    <w id="4.2">,</w>
+    <w id="4.3">shepherds</w>
+    <w id="4.4">,</w>
+    <w id="4.5">cool</w>
+    <w id="4.6">outfits</w>
+    <w id="4.7">...</w>
+    <time id="T1E" value="00:00:18,100" />
+  </s>
+  <s id="5">
+    <time id="T1S" value="00:00:18,100" />
+    <w id="5.1">All</w>
+    <w id="5.2">a</w>
+    <w id="5.3">front</w>
+    <w id="5.4">!</w>
+    <time id="T1E" value="00:00:20,100" />
+  </s>
+  <s id="6">
+    <time id="T1S" value="00:00:20,200" />
+    <w id="6.1">Exploreres</w>
+    <w id="6.2">have</w>
+    <w id="6.3">searched</w>
+    <w id="6.4">for</w>
+    <w id="6.5">it</w>
+    <w id="6.6">.</w>
+    <time id="T1E" value="00:00:23,000" />
+  </s>
+  <s id="7">
+    <time id="T1S" value="00:00:24,500" />
+    <w id="7.1">Called</w>
+    <w id="7.2">it</w>
+    <w id="7.3">El</w>
+    <w id="7.4">Dorado</w>
+    <w id="7.5">.</w>
+    <time id="T1E" value="00:00:27,000" />
+  </s>
+  <s id="8">
+    <time id="T1S" value="00:00:28,000" />
+    <w id="8.1">They</w>
+    <w id="8.2">looked</w>
+    <w id="8.3">for</w>
+    <w id="8.4">it</w>
+    <w id="8.5">in</w>
+    <w id="8.6">South</w>
+    <w id="8.7">America</w>
+    <w id="8.8">,</w>
+    <time id="T1E" value="00:00:31,000" />
+    <time id="T1S" value="00:00:31,300" />
+    <w id="8.9">but</w>
+    <w id="8.10">it</w>
+    <w id="8.11">was</w>
+    <w id="8.12">in</w>
+    <w id="8.13">Africa</w>
+    <w id="8.14">the</w>
+    <w id="8.15">whole</w>
+    <w id="8.16">time</w>
+    <w id="8.17">.</w>
+    <time id="T1E" value="00:00:35,500" />
+  </s>
+  <s id="9">
+    <time id="T1S" value="00:00:36,100" />
+    <w id="9.1">I</w>
+    <w id="9.2">'m</w>
+    <w id="9.3">the</w>
+    <w id="9.4">only</w>
+    <w id="9.5">one</w>
+    <w id="9.6">who</w>
+    <w id="9.7">'s</w>
+    <w id="9.8">seen</w>
+    <w id="9.9">it</w>
+    <w id="9.10">,</w>
+    <time id="T1E" value="00:00:40,000" />
+    <time id="T1S" value="00:00:41,000" />
+    <w id="9.11">and</w>
+    <w id="9.12">made</w>
+    <w id="9.13">it</w>
+    <w id="9.14">out</w>
+    <w id="9.15">alive</w>
+    <w id="9.16">.</w>
+    <time id="T1E" value="00:00:43,400" />
+  </s>
+  <s id="10">
+    <time id="T1S" value="00:00:59,000" />
+    <w id="10.1">I</w>
+    <w id="10.2">can</w>
+    <w id="10.3">see</w>
+    <w id="10.4">you</w>
+    <w id="10.5">!</w>
+    <time id="T1E" value="00:01:01,000" />
+  </s>
+  <s id="11">
+    <time id="T1S" value="00:01:07,000" />
+    <w id="11.1">The</w>
+    <w id="11.2">world</w>
+    <w id="11.3">,</w>
+    <time id="T1E" value="00:01:09,000" />
+    <time id="T1S" value="00:01:09,000" />
+    <w id="11.4">is</w>
+    <w id="11.5">changing</w>
+    <w id="11.6">.</w>
+    <time id="T1E" value="00:01:11,000" />
+  </s>
+  <s id="12">
+    <time id="T1S" value="00:01:11,500" />
+    <w id="12.1">Soon</w>
+    <w id="12.2">there</w>
+    <w id="12.3">will</w>
+    <w id="12.4">only</w>
+    <w id="12.5">be</w>
+    <w id="12.6">the</w>
+    <w id="12.7">conquered</w>
+    <w id="12.8">,</w>
+    <time id="T1E" value="00:01:15,500" />
+    <time id="T1S" value="00:01:16,400" />
+    <w id="12.9">and</w>
+    <w id="12.10">the</w>
+    <w id="12.11">conquerers</w>
+    <w id="12.12">.</w>
+    <time id="T1E" value="00:01:18,500" />
+  </s>
+  <s id="13">
+    <time id="T1S" value="00:01:20,300" />
+    <w id="13.1">You</w>
+    <w id="13.2">are</w>
+    <w id="13.3">a</w>
+    <w id="13.4">good</w>
+    <w id="13.5">man</w>
+    <w id="13.6">,</w>
+    <time id="T1E" value="00:01:23,500" />
+  </s>
+  <s id="14">
+    <time id="T1S" value="00:01:24,000" />
+    <w id="14.1">With</w>
+    <w id="14.2">a</w>
+    <w id="14.3">good</w>
+    <w id="14.4">heart</w>
+    <w id="14.5">.</w>
+    <time id="T1E" value="00:01:26,000" />
+  </s>
+  <s id="15">
+    <time id="T1S" value="00:01:27,400" />
+    <w id="15.1">And</w>
+    <w id="15.2">it</w>
+    <w id="15.3">'s</w>
+    <w id="15.4">hard</w>
+    <w id="15.5">for</w>
+    <w id="15.6">a</w>
+    <w id="15.7">good</w>
+    <w id="15.8">man</w>
+    <w id="15.9">to</w>
+    <w id="15.10">be</w>
+    <w id="15.11">a</w>
+    <w id="15.12">king</w>
+    <w id="15.13">.</w>
+    <time id="T1E" value="00:01:32,300" />
+  </s>
+  <meta>
+    <conversion>
+      <corrected_words>0</corrected_words>
+      <sentences>15</sentences>
+      <tokens>120</tokens>
+      <encoding>utf-8</encoding>
+      <unknown_words>1</unknown_words>
+      <ignored_blocks>0</ignored_blocks>
+      <truecased_words>0</truecased_words>
+    </conversion>
+    <source>
+      <genre>Action,Drama,Sci-Fi</genre>
+      <year>2018</year>
+    </source>
+    <subtitle>
+      <language>English</language>
+      <date>2017-06-10</date>
+      <duration>00:01:32,300</duration>
+      <cds>1/1</cds>
+      <blocks>1</blocks>
+      <confidence>1.0</confidence>
+    </subtitle>
+  </meta>
+</document>

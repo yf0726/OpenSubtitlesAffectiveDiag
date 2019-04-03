@@ -1,0 +1,147 @@
+A big typhoon is brewing south of the Ryukyu Islands , heading northeast at <NUM> mile per hour .<EOS>
+We're ready , sir !<EOS>Off you go !<EOS>Let's go !<EOS>
+The storm is coming .<EOS>Typhoon <NUM> is heading north and rapidly gaining strength .<EOS>It'll soon hit Boso Peninsula .<EOS>Here in Tateyama , it's raining in torrents and the wind is fierce .<EOS>We can hardly stand up .<EOS>Weather Central reports the typhoon has an air pressure of <NUM> millibars .<EOS>The velocity ...<EOS>The velocity of its wind is <NUM> meters .<EOS>It's moving fast ...<EOS>
+Oh , no !<EOS>
+Bad timing .<EOS>
+My house !<EOS>
+All troops , gather around Route <NUM> .<EOS>Concentrate your firepower and stop the beast .<EOS>
+Lock on target !<EOS>Fire !<EOS>
+The U.S. Navy Fifth Squadron is moving toward Misawa .<EOS>Third and Fourth Maser Gun Units .<EOS>
+Maser , be ready !<EOS>What the ... ?<EOS>
+Raise turrets !<EOS>Link with target system !<EOS>
+Fire !<EOS>Fire maser !<EOS>
+The rain has reduced its power to <NUM> percent .<EOS>
+Pull back !<EOS>
+Tateyama after a nightmare .<EOS>The damage is shocking .<EOS>Residents are totally despondent .<EOS>Army troops are pursuing their rescue operation .<EOS>Premier Tsuge identified the giant monster as another Godzilla . The first one raided us in <NUM> .<EOS>The new Godzilla inflicted heavy damage on Tateyama and disappeared in the Pacific .<EOS>It might still be hiding near us .<EOS>Forty-five years after the first one how can we cope with the new one that has raided us ?<EOS>
+Forty-five years ago , in <NUM> , the first Godzilla hit Tokyo .<EOS>It was killed with a device invented by Dr. Serizawa .<EOS>
+But it can never be used again .<EOS>Dr. Serizawa feared its power and sealed its secret with his own death .<EOS>That Godzilla .<EOS>After its appearance giant monsters have often raided us .<EOS>And then there was Mothra , a giant moth from the South Pacific .<EOS>We invented a heat-ray gun to use against it .<EOS>Our battle with Bigfoot Gaira enabled us to organize a troop to combat monsters with maser guns .<EOS>
+Each time , Tokyo was rebuilt after the devastation thanks to the efforts of diligent citizens .<EOS>But Godzilla ...<EOS>There's no monster like that .<EOS>Now it's back in Japan again .<EOS>What can we do ?<EOS>
+We're not blaming you .<EOS>You will not be held responsible for unintentional deaths in battle .<EOS>We want to know why it happened .<EOS>Why did a genius operator like you miss the <NUM>-type vehicle ?<EOS>Panicked in terror ?<EOS>I'm ready for any punishment .<EOS>
+Akane has been transferred to Data Room .<EOS>
+In fact , let alone other monsters maser guns can n't injure Godzilla .<EOS>That must be the consensus .<EOS>I understand .<EOS>But we can n't let anyone die in vain .<EOS>Too many have fallen victim to Godzilla .<EOS>What's this ? It looks like a monster .<EOS>You must know .<EOS>Trilobite . A species that became extinct <NUM> million years ago .<EOS>A robot ?<EOS>Half-robot .<EOS>The exterior is a robot .<EOS>I used horseshoe-crab muscles and nerves .<EOS>It's controlled by DNA computers , so it moves as if it were alive .<EOS>I want to conserve species , even life forms like this especially when human beings are devastating the planet .<EOS>That's my mission .<EOS>Nobody's listening .<EOS>
+Mr. Yuhara ?<EOS>I'm from the government .<EOS>Would you please come with us ?<EOS>
+They're here .<EOS>Here are Japan's greatest scientific minds from various fields .<EOS>They should be called the brain of our country .<EOS>I'd like to show you something .<EOS>
+Godzilla bones .<EOS>
+Bones of the Godzilla that raided Japan in <NUM> .<EOS>They were found off Boso Peninsula .<EOS>Can you extract an inter-spinal cell from them ?<EOS>It wo n't be easy .<EOS>You want a Godzilla clone ?<EOS>Not exactly .<EOS>We're going to make something called a bio-robot .<EOS>It'll be a powerful weapon against Godzilla .<EOS>A mechanical Godzilla to beat Godzilla .<EOS>We need your cooperation on this project .<EOS>This is a request from the government .<EOS>
+The special bill on production of an anti-Godzilla super-weapon has passed through the Diet .<EOS>Where will the money come from ?<EOS>Our pockets ?<EOS>No more taxes !<EOS>We're meeting a crisis . Realize it .<EOS>We might use the weapon on other occasions too .<EOS>It's Japan's rearmament .<EOS>The world is worried .<EOS>I'll convince them .<EOS>I'm ready to visit any country to do so .<EOS>Japan was raided by Godzilla twice .<EOS>I'll tell them how the victims suffered .<EOS>That's my responsibility .<EOS>You like this job ?<EOS>You can relax here .<EOS>It'll suit you .<EOS>We're trying our best to make the weapon .<EOS>It'll finish Godzilla , absolutely !<EOS>
+Good morning .<EOS>
+Sara , toast .<EOS>The number of supporters grew .<EOS>Seventy-seven percent .<EOS>Opposition blamed the government for the speedy passage of the Anti-Godzilla Weapon Bill .<EOS>But public opinion is supporting the government more than before .<EOS>What do you think about it ?<EOS>It means the terror of Godzilla is spreading in the minds of the people .<EOS>Dad , wo n't you take this job ?<EOS>No .<EOS>Why not ?<EOS>You know the most important thing for me is to keep you company .<EOS>You have many problems . You need me .<EOS>No , I do n't .<EOS>Do n't say I'm in your way .<EOS>I've got an idea !<EOS>A baseball star sign a contract on the condition that his child can enter the dugout .<EOS>How about that ?<EOS>Baseball is one thing . My job is another .<EOS>Eat your vegetables .<EOS>Mind the nutritional balance .<EOS>What about you ?<EOS>I hate vegetables .<EOS>We have a visitor .<EOS>Eat quickly . Do n't be late .<EOS>Would you please reconsider ?<EOS>Did n't I refuse it ?<EOS>Yes , you did , but I have a new proposition .<EOS>Like the ballplayer whose child can enter the dugout .<EOS>Can n't you accept it ?<EOS>
+You live near here ?<EOS>She's new . Be nice to her .<EOS>They're making a robot here .<EOS>It's going to beat Godzilla .<EOS>What's its name ?<EOS>A mechanical Godzilla , so Mechagodzilla .<EOS>Mechagodzilla !<EOS>That's nice !<EOS>I live here . Goodbye .<EOS>I'm back .<EOS>Welcome home .<EOS>
+Wonderful !<EOS>The Godzilla cells began to divide .<EOS>Our project is now on course .<EOS>
+Why Godzilla ?<EOS>I wish they'd bring Mom back to life , not a monster .<EOS>
+The nation needs strong leadership .<EOS>New prime minister .<EOS>
+How are you ?<EOS>I'm the leader of Squadron Kiryu .<EOS>Kiryu ?<EOS>That is the name of the anti-Godzilla robot .<EOS>Mechagodzilla .<EOS>We'll have the best pilots and crew .<EOS>You're on the list too .<EOS>Three and a half years is a long time .<EOS>
+Squadron Kiryu , halt !<EOS>Right turn !<EOS>Salute !<EOS>
+Squadron Kiryu , led by Colonel Togashi to start operational training .<EOS>
+This must be a mistake .<EOS>Why are you here ?<EOS>Godzilla killed my brother , but who caused it ?<EOS>
+Stop it !<EOS>Be careful , men !<EOS>Do n't let her kill us like my brother .<EOS>Hayama ! I'm the leader .<EOS>Any complaints ?<EOS>Even if you're a good pilot if you are going to upset our teamwork , get out !<EOS>Anything else ?<EOS>
+Hello .<EOS>Sleeping grass ?<EOS>It moves when touched .<EOS>Coffee .<EOS>
+Here you are .<EOS>The same .<EOS>Hello .<EOS>Wolf !<EOS>Shut up !<EOS>May I sit here ?<EOS>Akane ... I mean , Miss Yashiro .<EOS>Would you like to have kids ?<EOS>Well , maybe I'm too rash .<EOS>I hear the leader chose you to pilot Kiryu .<EOS>That means you're the best pilot .<EOS>What does he see in you ?<EOS>This project is doomed .<EOS>You seem to have many old fans .<EOS>Are you emitting pheromone ?<EOS>The insult !<EOS>Beat it !<EOS>Hayama , you're going too far .<EOS>I see .<EOS>That explains his hostility .<EOS>I felt something odd about you .<EOS>A wall between you and the others .<EOS>You're isolated .<EOS>You still keep it ?<EOS>Like her mother .<EOS>Dad !<EOS>I had one before .<EOS>I had no friends .<EOS>No family . I'm alone in the world .<EOS>So I got used to isolation . It does n't bother me .<EOS>Okay , let's make a bet .<EOS>If Mechagodzilla ... I mean , if Kiryu beats Godzilla I'll treat you to dinner in celebration .<EOS>But if Godzilla overcomes Kiryu the maker owes you an apology .<EOS>So I'll treat you to dinner . Is it a deal ?<EOS>
+I was little when I had the plant .<EOS>Do n't keep it forever .<EOS>
+Kiryu , the anti-Godzilla weapon our country desperately needs is now complete .<EOS>I thank the people who rendered their service in its construction .<EOS>It's my greatest pleasure to report it to the world today .<EOS>
+I'll explain its structure and performance .<EOS>As you know , the form is based on Godzilla .<EOS>In terms of robotics , it's superb .<EOS>A perfect form for combat , the best possible form .<EOS>DNA computers are used for its transmit system .<EOS>In a usual computer , only zero and one are used .<EOS>DNA has four types of bases .<EOS>They make speedy calculation possible .<EOS>
+It's remote-controlled from the transport .<EOS>What's this ?<EOS>A whale ?<EOS>No !<EOS>Calling for scramble !<EOS>A monster in the Pacific ! Go get it immediately !<EOS>Kiryu can be in action for two hours .<EOS>Kiryu can be in action for two hours .<EOS>For longer periods , energy is sent from a nearby Defense Force base to a transport on location .<EOS>Kiryu is equipped with a weapon called the Absolute-Zero Gun . It's very powerful .<EOS>We tested it last week . Look .<EOS>Absolute zero means <NUM>.<NUM> degrees below zero .<EOS>It emits light of very low temperature .<EOS>It smashed the atoms of the target .<EOS>
+It consumes <NUM> percent of the energy . Kiryu , it's the ultimate weapon .<EOS>Something is moving on the sea . It's not a ship .<EOS>
+What ? Godzilla ?<EOS>It's going north , heading for Tokyo Bay .<EOS>Dispatch the Defense Forces and Kiryu immediately .<EOS>
+Kiryu is under the control of the AMF chief of staff .<EOS>It will leave immediately !<EOS>Godzilla ...<EOS>
+White Herons <NUM> , <NUM> and <NUM> , move to lift-off position !<EOS>
+Barriers off !<EOS>Lift-off okay .<EOS>A request from the U.S. Army !<EOS>Wait here .<EOS>White Herons ready !<EOS>Lift off !<EOS>White Heron <NUM> .<EOS>
+Ground crew , pull back to safety !<EOS>Body-lock away .<EOS>
+Transport wire arms down !<EOS>
+Kiryu's body is up .<EOS>The coast is clear .<EOS>Body-balancer normal .<EOS>White Herons in level flight .<EOS>
+Godzilla has entered Tokyo Bay , heading north for Tokyo .<EOS>Yokosuka , Yokohama and Kawasaki are in danger .<EOS>Evacuate them .<EOS>All main roads are blocked .<EOS>Do n't use your cars .<EOS>What are you waiting for ? Get moving !<EOS>
+Attention ! Godzilla is coming ! Get out !<EOS>Gather round !<EOS>
+No time !<EOS>Get out of here !<EOS>An evacuation order has been issued !<EOS>Visitors to Hakkejima Sea Paradise evacuate the place with the soldiers !<EOS>Take your children to safety !<EOS>
+Godzilla is here !<EOS>
+Get out !<EOS>Run !<EOS>
+Kiryu has arrived at the location .<EOS>Troops , be ready to attack .<EOS>Can Kiryu stop it ?<EOS>
+Target spotted . Go down !<EOS>Roger , I'm going down .<EOS>Hakkejima has been evacuated .<EOS>
+Kiryu landed .<EOS>Leave Kiryu's range of action and wait !<EOS>Wire retracted .<EOS>White Heron <NUM> leaving the range .<EOS>
+Attack !<EOS>Roger !<EOS>Rockets away !<EOS>
+Missiles away !<EOS>
+Use the maser guns .<EOS>Roger !<EOS>
+It's retreating !<EOS>Akane , finish it !<EOS>Absolute-Zero , stand by .<EOS>
+Locks off .<EOS>
+What's happening ?<EOS>There is no reaction !<EOS>
+Somethings wrong with the system .<EOS>Not now !<EOS>
+Godzilla's leaving .<EOS>Akane , how's Kiryu ?<EOS>Unable to operate .<EOS>Okay . Take it to the dock .<EOS>Roger .<EOS>
+What's that ? You want to kill us ?<EOS>What's going on ?<EOS>It was Kiryu's idea !<EOS>
+It's running wild !<EOS>
+As if it were Godzilla !<EOS>Remain where you are and wait for an order to attack .<EOS>Where's Squadron Kiryu ?<EOS>I'll attract its attention and lure it to the sea .<EOS>Can you ?<EOS>Leave it to me .<EOS>
+Damn it ! Just follow me !<EOS>
+White Heron <NUM> shot down !<EOS>
+You okay ?<EOS>Hayama !<EOS>Come on !<EOS>
+Go ahead ! Hurry !<EOS>
+Why save me ?<EOS>
+It was not an error in the system .<EOS>I see ! Kiryu recognizes its enemy .<EOS>It might use the Absolute-Zero .<EOS>Is there any way to stop Kiryu ?<EOS>Wait until it consumes all its energy .<EOS>How long ?<EOS>About an hour .<EOS>
+Where's Godzilla ?<EOS>We're desperately searching for it , but ...<EOS>
+I'll assume responsibility for this failure .<EOS>I pushed the project .<EOS>Will you resign ?<EOS>We're trying hard to fix Kiryu . Wo n't we need it ?<EOS>Squadron Kiryu ?<EOS>I can n't say now .<EOS>Kiryu was made from the bones of Godzilla .<EOS>Is that why it calls in Godzilla ?<EOS>
+The circuit joint is okay .<EOS>Something made it mad .<EOS>What , I wonder ?<EOS>
+Give me your data .<EOS>Okay .<EOS>
+Godzilla roared at that moment .<EOS>Godzilla's roar disturbed Mechagodzilla's system .<EOS>
+Can Kiryu be fixed ?<EOS>Sure .<EOS>We used Godzilla's DNA for Kiryu's DNA computers , so it was adaptable .<EOS>If we change the base to a different type and make different DNA computers Kiryu wo n't be bothered by Godzilla .<EOS>That's good .<EOS>But Mechagodzilla will have no chance .<EOS>No .<EOS>Only Kiryu can beat Godzilla .<EOS>Anyway , I'll do my best for you , Akane .<EOS>I talk too much .<EOS>I'm glad the injury was n't serious .<EOS>Who asked you to do it ?<EOS>Do I owe you my life ?<EOS>How disgusting !<EOS>Why blame her ?<EOS>She saved our lives .<EOS>
+So you're on her side now ?<EOS>Listen .<EOS>Who's your enemy , Akane or Godzilla ?<EOS>No storm in a teacup .<EOS>
+Where's Sara ?<EOS>
+Sara , what are you doing ?<EOS>Kiryu has a life too .<EOS>Why must it fight Godzilla when they should be friends ?<EOS>It thinks so .<EOS>
+The H-bomb first brought Godzilla here .<EOS>And now a Godzilla-like robot brought him .<EOS>Who's to blame ? Human beings .<EOS>I know what you mean , but ...<EOS>You do n't !<EOS>Adults say life is important , but they do n't believe it .<EOS>No one pities Kiryu , though it has a life too .<EOS>Sara .<EOS>She's eccentric .<EOS>Her mother died when Sara was <NUM> .<EOS>She fell ill while she was pregnant .<EOS>The doctor said he could save either the mother or the fetus .<EOS>I asked the doctor to save my wife .<EOS>But she wished her baby to be born .<EOS>Sara wanted both her mother and the baby to be safe .<EOS>In the end , both of them went to heaven .<EOS>Since then Sara has been sensitive about life and death .<EOS>
+Talking with your mother again ?<EOS>It's none of your concern .<EOS>Escaping from reality ?<EOS>You must go onward , even if you're afraid .<EOS>What's that ? Do n't push that on me .<EOS>You must fight and fight for your chair .<EOS>I've done so .<EOS>Fight against whom ?<EOS>The whole world .<EOS>Well , certainly Kiryu is alive .<EOS>But it's like me . Its life is worthless .<EOS>Is your life worthless ?<EOS>Nobody was glad to have me .<EOS>I should n't have been born .<EOS>Why not ?<EOS>To be alive is good enough .<EOS>No life can be worthless .<EOS>It can n't ?<EOS>
+Here's a report .<EOS>Is this Godzilla ?<EOS>Maybe .<EOS>It's near us .<EOS>Godzilla is in Tokyo Bay heading for Shinagawa .<EOS>It will land at <NUM> .<EOS>All troops , take positions !<EOS>
+Godzilla is here !<EOS>
+F<NUM> Yellow <NUM> attacking !<EOS>
+Godzilla has landed at Shinagawa .<EOS>Kiryu's maintenance is done . Report how it is .<EOS>Do a final check .<EOS>
+A big fire broke out in Shinagawa .<EOS>All troops , pull back !<EOS>Kiryu has been repaired .<EOS>The scramble order ?<EOS>Not yet .<EOS>No other weapons are useful .<EOS>Why hesitate ?<EOS>There will be more victims .<EOS>
+The chief of staff is waiting at the Central Command Post .<EOS>The AMF chief of staff ?<EOS>In Kiryu's control room .<EOS>
+Yes ?<EOS>Your permission to dispatch Kiryu , sir .<EOS>It's fully repaired . It wo n't run wild again .<EOS>How can you be so sure ?<EOS>The future of AMF depends on it .<EOS>We all want it .<EOS>Togashi .<EOS>Dispatch Kiryu .<EOS>It's the only chance we have left .<EOS>It's my responsibility .<EOS>
+I'll be waiting .<EOS>
+The prime minister gave the okay !<EOS>Yes . I got the report just now .<EOS>I'll fly too .<EOS>Okay .<EOS>
+Dispatch Kiryu immediately !<EOS>
+Maybe I do n't dislike her after all .<EOS>
+Here I come !<EOS>
+I'm calling from Shinagawa Hospital .<EOS>There are many patients to evacuate .<EOS>Send more cars .<EOS>Godzilla !<EOS>
+Godzilla's here !<EOS>Distance : <NUM> .<EOS>It's going straight ahead .<EOS>SSM <EOS><NUM> , forward .<EOS>Godzilla is approaching Shinagawa Hospital .<EOS>Too late .<EOS>
+Let go of Kiryu .<EOS>You mean it ?<EOS>Get ready !<EOS>
+SSM-<NUM> , fire !<EOS>
+SSM <EOS><NUM> destroyed !<EOS>
+Where are you going ? !<EOS>Watch out !<EOS>Down !<EOS>
+That one ?<EOS>That's Kiryu .<EOS>
+Come on !<EOS>Get in !<EOS>
+Evacuation completed !<EOS>Go ahead , Kiryu !<EOS>Roger !<EOS>Commence attack !<EOS>
+What's the damage ?<EOS>It's okay .<EOS>
+Atsugi Base , we're ready to take off .<EOS>
+Now , go !<EOS>
+Back-unit away !<EOS>
+I'll show you what Kiryu can do .<EOS>
+Good !<EOS>
+The Shinagawa and Minato areas have been evacuated .<EOS>
+She did it !<EOS>It can n't fight much longer .<EOS>Its energy is depleting .<EOS>There's only <NUM> percent of its supply left .<EOS>Finish it quickly .<EOS>I understand . Absolute-Zero stand by .<EOS>Absolute-Zero stand by .<EOS>Lock off !<EOS>
+Absolute-Zero away !<EOS>
+The buildings are gone !<EOS>What are you doing ? Stand up !<EOS>No ! Kiryu wo n't respond ! <EOS>What ? !<EOS>Godzilla's heat ray damaged Kiryu's control system .<EOS>Fix it !<EOS>If the control system is damaged , Kiryu can be manually operated through one of the several maintenance booths .<EOS>That's it !<EOS>It's too dangerous .<EOS>Godzilla's heat ray is radioactive .<EOS>Let me do it !<EOS>I'm ready . <EOS>No !<EOS>I'll go ! <EOS>Wait , Akane !<EOS>You have no permission to go ! Wait !<EOS>
+Take care .<EOS>Do n't let him beat you .<EOS>Maser Gun Unit , attract Godzilla's attention .<EOS>The energy ?<EOS>We're short of electrical power .<EOS>Can we get it from power companies ?<EOS>It we do , Tokyo will suffer a blackout .<EOS>Let's try .<EOS>Ask the power companies immediately .<EOS>
+Oh , no !<EOS>
+MB-<NUM> is alive .<EOS>
+Okay , suspend the power supply .<EOS>Okay , suspend the power supply .<EOS>Areas <NUM> and <NUM> , off .<EOS>Areas <NUM> and <NUM> , off .<EOS>
+Kiryu ...<EOS>
+Remove radioactivity .<EOS>Okay , Dr. Yuhara .<EOS>
+It's on !<EOS>But the energy ...<EOS>We'll send it .<EOS>
+Microwave the target .<EOS>Radiate !<EOS>
+Kiryu , you understand what I say .<EOS>You and I are buddies .<EOS>Shall we go ?<EOS>Okay , Kiryu is on !<EOS>
+Behind you !<EOS>
+Do n't die !<EOS>
+Kiryu !<EOS>Your power ...<EOS>Give me power !<EOS>What's the damage ? Report it !<EOS>Come in ! Answer me !<EOS>
+Kiryu away !<EOS>He is standing !<EOS>
+No ! Not again !<EOS>
+Godzilla !<EOS>
+Godzilla can n't spit fire now .<EOS>Shoot the Absolute-Zero !<EOS>
+Never mind me ! Shoot it !<EOS>Hayama !<EOS>Let's go !<EOS>
+Godzilla has surfaced !<EOS>
+The Absolute-Zero is damaged .<EOS>There is no energy left .<EOS>Unable to follow Godzilla .<EOS>Well done !<EOS>Good job , Akane !<EOS>
+Send a unit to restore Kiryu .<EOS>We're coming to save you . Wait .<EOS>
+We could n't kill it .<EOS>But we did expel Godzilla .<EOS>We have a weapon more powerful than Godzilla . That means a lot .<EOS>We sacrificed plenty for it but it represents a great victory !<EOS>Prime minister .<EOS>
+Hishinuma . You did a great job !<EOS>
+Sara ?<EOS>It's nothing .<EOS>
+Repair crew , go to first deck .<EOS>
+Thank you .<EOS>For what ?<EOS>
+You gave me strength .<EOS>So did the others .<EOS>No life is worthless .<EOS>I believe you now .<EOS>
+Where's the plant ?<EOS>
+Remember our bet ?<EOS>I owe you a celebration dinner .<EOS>I did n't win .<EOS>It was a draw .<EOS>In that case , I'll treat you to dinner .<EOS>
+I did it !<EOS>
