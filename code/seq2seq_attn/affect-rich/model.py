@@ -34,11 +34,12 @@ class Options(object):
         self.corpus_size = corpus_size
 
 def compute_attention(attention_mechanism, cell_output):
-    alignments, _ = attention_mechanism(cell_output, None) # 每一个encoder的词对应的attention?
+    alignments, _  = attention_mechanism(cell_output, None) # 每一个encoder的词对应的attention?
     expanded_alignments = tf.expand_dims(alignments, 1) # (1,19) -> (1,1,19)
     context = tf.matmul(expanded_alignments, attention_mechanism.values) # (1,1,19),(1,19,256) -> (1,1,256)
     context = tf.squeeze(context, [1])
-    return context # shape (1,256)
+    test_score = alignments
+    return context,test_score # shape (1,256)
 
 class Seq2SeqAttn(object):
     '''Sequence to sequence network with attention mechanism.'''
@@ -68,13 +69,12 @@ class Seq2SeqAttn(object):
             
             self.VAD = tf.placeholder(tf.float32, shape = [opts.corpus_size,3])
             self.termfreq = tf.placeholder(tf.float32, shape = [opts.corpus_size,1])
+            self.VAD_loss = tf.placeholder(tf.float32, shape = [opts.corpus_size,1])
 
             with tf.variable_scope('embedding', reuse = tf.AUTO_REUSE):
                 # how to get input_embed for encoder and decoder
                 # word_embeddings = tf.Variable(tf.random_uniform([opts.vocab_size, opts.word_embed_size], -1.0, 1.0))
                 word_embeddings = tf.Variable(opts.word_embeddings, name = 'word_embeddings')
-#                 VAD = opts.VAD#, name = 'VAD')
-#                 termfreq = tf.placeholder(opts.termfreq, name = 'termfreq')
                 
                 enc_input_embed = tf.nn.embedding_lookup(word_embeddings, self.enc_input)
                 dec_input_embed = tf.nn.embedding_lookup(word_embeddings, self.dec_input)
@@ -84,6 +84,9 @@ class Seq2SeqAttn(object):
                 
                 enc_input_tf = tf.nn.embedding_lookup(self.termfreq, self.enc_input)
                 target_tf = tf.nn.embedding_lookup(self.termfreq, self.target)
+                
+                target_VAD_loss = tf.nn.embedding_lookup(self.VAD_loss, self.target)
+                
 
             with tf.variable_scope('encoding', reuse = tf.AUTO_REUSE):
                 cell_enc = tf.nn.rnn_cell.GRUCell(opts.n_hidden_units_enc)
@@ -119,7 +122,7 @@ class Seq2SeqAttn(object):
                     dec_initial_state = cell_dec.zero_state(opts.batch_size, tf.float32)
                     # 和上文算的AttentionWrapper联系？c?
                     # attention是一个词的context还是一整个encoder句子的？
-                    attention = compute_attention(attn_mechanism, dec_initial_state.cell_state) #（1，256）
+                    attention,self.test_score = compute_attention(attn_mechanism, dec_initial_state.cell_state) #（1，256）
                     dec_initial_state = dec_initial_state.clone(attention = attention)
                     outputs_dec, _ = tf.nn.dynamic_rnn(cell = cell_dec,
                         inputs = dec_input_embed,
@@ -135,9 +138,6 @@ class Seq2SeqAttn(object):
                         maxlen = opts.max_uttr_len_dec, dtype = tf.float32)
                     delta = 0.15
                     # cross entropy loss function defined by Affective attention
-#                     norm_VAD_target = 1+delta*tf.norm(target_VAD,2,2)
-#                     phi = -1 * opts.corpus_size * norm_VAD_target/tf.reduce_sum(norm_VAD_target)
-#                     phi = tf.matmul(phi,tf.log(target_tf))
                     self.loss = sequence_loss(logits, self.target, weights)
                     self.loss_batch = sequence_loss(logits, self.target, weights, average_across_batch = False)
                     self.optimizer = tf.train.AdamOptimizer(opts.learning_rate).minimize(self.loss)
@@ -170,7 +170,7 @@ class Seq2SeqAttn(object):
             self.session.run(self.init)
             print('TensorFlow variables initialized.')
 
-    def validate(self, valid_set,VAD,termfreq):
+    def validate(self, valid_set,VAD,termfreq,VAD_loss):
         """Validate the model on the validation set.
         Args:
             valid_set: Dictionary containing:
@@ -192,9 +192,12 @@ class Seq2SeqAttn(object):
             t = s + opts.batch_size
             feed_dict = {self.enc_input: valid_set['enc_input'][s:t,:],
                          self.dec_input: valid_set['dec_input'][s:t,:],
+                         self.enc_input_len: valid_set['enc_input_len'][s:t],
+                         self.dec_input_len: valid_set['dec_input_len'][s:t],
                          self.target: valid_set['target'][s:t,:],
                          self.VAD: VAD,
-                         self.termfreq: termfreq}
+                         self.termfreq: termfreq,
+                         self.VAD_loss:VAD_loss}
             loss += self.session.run(self.loss, feed_dict = feed_dict)
         return np.exp(loss / num_batches)
 
@@ -205,11 +208,12 @@ class Seq2SeqAttn(object):
                      self.enc_input_len: valid_set['enc_input_len'],
                      self.dec_input_len: valid_set['dec_input_len'],
                      self.VAD: VAD,
-                     self.termfreq: termfreq}
+                     self.termfreq: termfreq,
+                     self.VAD_loss:VAD_loss}
         loss_batch_val = self.session.run(self.loss_batch, feed_dict = feed_dict)
         return loss_batch_val
 
-    def train(self, train_set, VAD, termfreq, save_path, restore_epoch, valid_set = None):
+    def train(self, train_set, VAD, termfreq, VAD_loss,save_path, restore_epoch, valid_set = None):
         """Train the model.
         Args:
             train_set and valid_set: Dictionaries containing:
@@ -238,14 +242,14 @@ class Seq2SeqAttn(object):
                              self.enc_input_len: train_set['enc_input_len'][batch_indices],
                              self.dec_input_len: train_set['dec_input_len'][batch_indices],
                              self.VAD: VAD,
-                             self.termfreq: termfreq}
-#                              self.termfreq: train_set['termfreq'][batch_indices]}
-                _, loss_val = self.session.run([self.optimizer, self.loss], feed_dict = feed_dict)
-                print('Epoch {:03d}/{:03d}, valid ppl = {}, batch {:04d}/{:04d}, train loss = {}'.format(epoch + 1,
-                    opts.num_epochs, valid_ppl[-1], batch + 1, num_batches, loss_val), flush = True)
+                             self.termfreq: termfreq,
+                             self.VAD_loss:VAD_loss}
+                _, loss_val,test_score = self.session.run([self.optimizer, self.loss,self.test_score], feed_dict = feed_dict)
+                print('Epoch {:03d}/{:03d}, valid ppl = {}, batch {:04d}/{:04d}, train loss = {},test_score={}'.format(epoch + 1,
+                    opts.num_epochs, valid_ppl[-1], batch + 1, num_batches, loss_val,test_score), flush = True)
 
             if valid_set is not None:
-                valid_ppl.append(self.validate(valid_set,VAD, termfreq))
+                valid_ppl.append(self.validate(valid_set,VAD,termfreq,VAD_loss))
             self.save(os.path.join(save_path, 'model_epoch_{:03d}.ckpt'.format(restore_epoch + epoch + 1)))
 
         if valid_set is not None:
