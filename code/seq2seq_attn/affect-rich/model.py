@@ -8,9 +8,9 @@ from tensorflow.contrib.seq2seq import BeamSearchDecoder, dynamic_decode, sequen
 class Options(object):
     '''Parameters used by the Seq2SeqAttn model.'''
     def __init__(self, mode, num_epochs, batch_size, learning_rate, beam_width,
-                 vocab_size, max_uttr_len_enc, max_uttr_len_dec, go_index, eos_index,
+                 corpus_size, max_uttr_len_enc, max_uttr_len_dec, go_index, eos_index,
                  word_embed_size, n_hidden_units_enc, n_hidden_units_dec, attn_depth,
-                 word_embeddings,corpus_size):
+                 word_embeddings):
         super(Options, self).__init__()
 
         self.mode = mode
@@ -19,7 +19,7 @@ class Options(object):
         self.learning_rate = learning_rate
         self.beam_width = beam_width
 
-        self.vocab_size = vocab_size # vocabulary of whole corpus?
+        self.corpus_size = corpus_size # number of words in corpus
         self.max_uttr_len_enc = max_uttr_len_enc
         self.max_uttr_len_dec = max_uttr_len_dec
         self.go_index = go_index
@@ -31,15 +31,13 @@ class Options(object):
         self.attn_depth = attn_depth # v in attention
 
         self.word_embeddings = word_embeddings
-        self.corpus_size = corpus_size
 
 def compute_attention(attention_mechanism, cell_output):
     alignments, _  = attention_mechanism(cell_output, None) # 每一个encoder的词对应的attention?
     expanded_alignments = tf.expand_dims(alignments, 1) # (1,19) -> (1,1,19)
     context = tf.matmul(expanded_alignments, attention_mechanism.values) # (1,1,19),(1,19,256) -> (1,1,256)
     context = tf.squeeze(context, [1])
-    test_score = alignments
-    return context,test_score # shape (1,256)
+    return context # shape (1,256)
 
 class Seq2SeqAttn(object):
     '''Sequence to sequence network with attention mechanism.'''
@@ -73,8 +71,9 @@ class Seq2SeqAttn(object):
 
             with tf.variable_scope('embedding', reuse = tf.AUTO_REUSE):
                 # how to get input_embed for encoder and decoder
-                # word_embeddings = tf.Variable(tf.random_uniform([opts.vocab_size, opts.word_embed_size], -1.0, 1.0))
-                word_embeddings = tf.Variable(opts.word_embeddings, name = 'word_embeddings')
+                word_embeddings = tf.Variable(tf.random_uniform([opts.corpus_size, opts.word_embed_size],-1.0, 1.0),
+                                              name='embedding')
+#                 word_embeddings = tf.constant(opts.word_embeddings, name = 'word_embeddings')
                 
                 enc_input_embed = tf.nn.embedding_lookup(word_embeddings, self.enc_input)
                 dec_input_embed = tf.nn.embedding_lookup(word_embeddings, self.dec_input)
@@ -86,6 +85,7 @@ class Seq2SeqAttn(object):
                 target_tf = tf.nn.embedding_lookup(self.termfreq, self.target)
                 
                 target_VAD_loss = tf.nn.embedding_lookup(self.VAD_loss, self.target)
+                target_VAD_loss = tf.squeeze(target_VAD_loss)
                 
 
             with tf.variable_scope('encoding', reuse = tf.AUTO_REUSE):
@@ -97,11 +97,21 @@ class Seq2SeqAttn(object):
 
             if opts.mode == 'PREDICT':
                 enc_outputs = tile_batch(enc_outputs, multiplier = opts.beam_width)
+                enc_input_embed = tile_batch(enc_input_embed, multiplier = opts.beam_width)
+                enc_input_VAD = tile_batch(enc_input_VAD, multiplier = opts.beam_width)
+                enc_input_tf = tile_batch(enc_input_tf, multiplier = opts.beam_width)
                 tiled_enc_input_len = tile_batch(self.enc_input_len, multiplier = opts.beam_width)
             else:
                 tiled_enc_input_len = self.enc_input_len
-
-            with tf.variable_scope('decoding', reuse = tf.AUTO_REUSE) as vs:
+                
+            
+#             with tf.variable_scope('attention', reuse = tf.AUTO_REUSE) as attention_layer:
+#                 attention_Wb = tf.layers.Dense(units=3,
+#                                              use_bias=False,
+#                                              kernel_initializer = tf.truncated_normal_initializer(stddev = 0.1),
+#                                              name='attention_Wb')
+                
+            with tf.variable_scope('decoding', reuse = tf.AUTO_REUSE) as vs:                
                 # attn_mechanism: alpha_<t,t'>
                 attn_mechanism = MyBahdanauAttention(
                     num_units=opts.attn_depth,
@@ -114,7 +124,7 @@ class Seq2SeqAttn(object):
                 cell_dec = tf.nn.rnn_cell.GRUCell(opts.n_hidden_units_dec)
                 # AttentionWrapper: c?
                 cell_dec = AttentionWrapper(cell_dec, attn_mechanism, output_attention = False)
-                output_layer = tf.layers.Dense(units = opts.vocab_size,
+                output_layer = tf.layers.Dense(units = opts.corpus_size,
                     kernel_initializer = tf.truncated_normal_initializer(stddev = 0.1))
 
                 # Train
@@ -122,7 +132,7 @@ class Seq2SeqAttn(object):
                     dec_initial_state = cell_dec.zero_state(opts.batch_size, tf.float32)
                     # 和上文算的AttentionWrapper联系？c?
                     # attention是一个词的context还是一整个encoder句子的？
-                    attention,self.test_score = compute_attention(attn_mechanism, dec_initial_state.cell_state) #（1，256）
+                    attention = compute_attention(attn_mechanism, dec_initial_state.cell_state) #（1，256）
                     dec_initial_state = dec_initial_state.clone(attention = attention)
                     outputs_dec, _ = tf.nn.dynamic_rnn(cell = cell_dec,
                         inputs = dec_input_embed,
@@ -131,13 +141,16 @@ class Seq2SeqAttn(object):
                         dtype = tf.float32,
                         scope = vs)
                     # decoder的结果？
-                    # logits: vector (batch * max_utterance_len * V)
+                    # logits: `[batch_size, sequence_length, num_decoder_symbols]` 
+                    # The logits correspond to the prediction across all classes at each timestep.
                     logits = output_layer.apply(outputs_dec)
-                    # batch size * max sentence length; binary; 0 for non-word in orignal sentence
-                    weights = tf.sequence_mask(self.dec_input_len,
+                    # batch size * max sentence length; binary; 0 for non-word in orignal sentence; mask
+                    sequence_mask = tf.sequence_mask(self.dec_input_len,
                         maxlen = opts.max_uttr_len_dec, dtype = tf.float32)
-                    delta = 0.15
-                    # cross entropy loss function defined by Affective attention
+                    weights = sequence_mask * target_VAD_loss # affective objective function
+                    # sequence_mask: [batch_size, max_len]
+                    # target: [batch_size, max_len] VAD_loss: [batch_size,max_len]
+                    # softmax_loss_function(labels=targets, logits=logits_flat) 默认为sparse_softmax_cross_entropy_with_logits
                     self.loss = sequence_loss(logits, self.target, weights)
                     self.loss_batch = sequence_loss(logits, self.target, weights, average_across_batch = False)
                     self.optimizer = tf.train.AdamOptimizer(opts.learning_rate).minimize(self.loss)
@@ -161,6 +174,30 @@ class Seq2SeqAttn(object):
                         maximum_iterations = opts.max_uttr_len_dec,
                         scope = vs)
                     self.predicted_ids = final_outputs.predicted_ids
+#                     self.scores = final_outputs.scores # 'FinalBeamSearchDecoderOutput' object has no attribute 'scores'
+                    self.prob = final_state.log_probs
+                    # log_probs: The log probabilities with shape `[batch_size, beam_width, vocab_size]`.
+                    #  logits: Logits at the current time step. A tensor of shape `[batch_size, beam_width, vocab_size]`
+                    # step_log_probs = nn_ops.log_softmax(logits) # logsoftmax = logits - log(reduce_sum(exp(logits), axis))
+                    # step_log_probs = _mask_probs(step_log_probs, end_token, previously_finished)
+                    # total_probs = array_ops.expand_dims(beam_state.log_probs, 2) + step_log_probs
+                    #  final_outputs.scores #[batch_size, length, beam_width]
+            
+                if opts.mode == 'POST_PREDICT':
+                    dec_initial_state = cell_dec.zero_state(opts.batch_size, tf.float32)
+                    attention = compute_attention(attn_mechanism, dec_initial_state.cell_state) #（1，256）
+                    dec_initial_state = dec_initial_state.clone(attention = attention)
+                    outputs_dec, _ = tf.nn.dynamic_rnn(cell = cell_dec,
+                        inputs = dec_input_embed,
+                        sequence_length = self.dec_input_len,
+                        initial_state = dec_initial_state,
+                        dtype = tf.float32,
+                        scope = vs)
+                    logits = output_layer.apply(outputs_dec)
+                    sequence_mask = tf.sequence_mask(self.dec_input_len,
+                        maxlen = opts.max_uttr_len_dec, dtype = tf.float32)
+                    score = tf.nn.sparse_softmax_cross_entropy_with_logits(labels=self.target,logits=logits)
+                    self.prob = -1*tf.reduce_sum(score * sequence_mask)
 
             self.tvars = tf.trainable_variables()
             self.saver = tf.train.Saver(max_to_keep = 100)
@@ -244,9 +281,10 @@ class Seq2SeqAttn(object):
                              self.VAD: VAD,
                              self.termfreq: termfreq,
                              self.VAD_loss:VAD_loss}
-                _, loss_val,test_score = self.session.run([self.optimizer, self.loss,self.test_score], feed_dict = feed_dict)
-                print('Epoch {:03d}/{:03d}, valid ppl = {}, batch {:04d}/{:04d}, train loss = {},test_score={}'.format(epoch + 1,
-                    opts.num_epochs, valid_ppl[-1], batch + 1, num_batches, loss_val,test_score), flush = True)
+                _, loss_val = self.session.run([self.optimizer, self.loss], feed_dict = feed_dict)
+               
+                print('Epoch {:03d}/{:03d}, valid ppl = {}, batch {:04d}/{:04d}, train loss = {}'.format(epoch + 1,
+                    opts.num_epochs, valid_ppl[-1], batch + 1, num_batches, loss_val), flush = True)
 
             if valid_set is not None:
                 valid_ppl.append(self.validate(valid_set,VAD,termfreq,VAD_loss))
@@ -267,8 +305,10 @@ class Seq2SeqAttn(object):
         """
         opts = self.options
         num_examples = enc_input.shape[0]
-        num_batches = num_examples // opts.batch_size
+        # 每个batch的size要一样否则在graph中定义的placeholder的大小不符合
+        num_batches = num_examples//opts.batch_size
         prediction = []
+        probs = []
         for batch in range(num_batches):
             s = batch * opts.batch_size
             t = s + opts.batch_size
@@ -276,10 +316,46 @@ class Seq2SeqAttn(object):
                          self.enc_input_len: enc_input_len[s:t],
                          self.VAD: VAD,
                          self.termfreq: termfreq}
-            p = self.session.run(self.predicted_ids, feed_dict = feed_dict)
+            p,prob = self.session.run([self.predicted_ids, self.prob], feed_dict = feed_dict)
             prediction.append(p)
-        return prediction
+            probs.append(prob)
+        return np.vstack(prediction),np.vstack(probs)
+    
+    def post_predict(self, test_set, VAD, termfreq):
+        """Get the post-probability of prediction.
+        Args:
+            train_set and valid_set: Dictionaries containing:
+                enc_input: Input to the word-level encoders. Shaped `[N, max_uttr_len]`.
+                dec_input: Input to the decoder. Shaped `[N, max_uttr_len]`.
+                target: Targets, expected output of the decoder. Shaped `[N, max_uttr_len]`.
+                enc_input_len: Lengths of the input to the word-level encoders. Shaped `[N]`.
+                dec_input_len: Lengths of the input to the decoder. Shaped `[N]`.
+        """
+        print('Start to train the model...')
+        opts = self.options
 
+        num_examples = test_set['enc_input'].shape[0]
+        num_batches = num_examples // opts.batch_size
+        
+        probs = []
+        logits_ = []
+
+        perm_indices = np.random.permutation(range(num_examples))
+        for batch in range(num_batches):
+            s = batch * opts.batch_size
+            t = s + opts.batch_size
+            batch_indices = perm_indices[s:t]
+            feed_dict = {self.enc_input: test_set['enc_input'][batch_indices,:],
+                         self.dec_input: test_set['dec_input'][batch_indices,:],
+                         self.target: test_set['target'][batch_indices,:],
+                         self.enc_input_len: test_set['enc_input_len'][batch_indices],
+                         self.dec_input_len: test_set['dec_input_len'][batch_indices],
+                         self.VAD: VAD,
+                         self.termfreq: termfreq}
+            prob = self.session.run([self.prob], feed_dict = feed_dict)
+            probs.append(prob)
+        return np.vstack(probs)
+    
     def save(self, save_path):
         print('Saving the trained model to {}...'.format(save_path))
         self.saver.save(self.session, save_path)

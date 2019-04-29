@@ -1,6 +1,7 @@
 # Bahdanaua source code intro: https://zhuanlan.zhihu.com/p/43646041
 
 import tensorflow as tf
+import numpy as np
 from tensorflow.contrib.seq2seq.python.ops.attention_wrapper import BahdanauAttention
 #from my_attention_wrapper import BahdanauAttention
 
@@ -9,31 +10,29 @@ def _my_bahdanau_score(processed_query, keys, attention_v):
     # keys: h query: s attention_v: v_a
     return tf.reduce_sum(attention_v * tf.tanh(keys + processed_query), [2]) 
 
-def _my_affective_attention_score(query, values, attention_Wb, embedding, VAD, enc_input_tf):
+def _my_affective_attention_score(query, values, attention_Wb,embedding, VAD, enc_input_tf):
     # query and values are hidden state of decoder and encoder (without multiplying W as in bahdanau_score)
     # query : [batch_size, n_hidden_units_dec]
     # values: [batch_size,max_utterance_len, n_hidden_units_enc]
     # embedding: [batch_size,max_utterance_len, embedding_size]
     # VAD: [batch_size,max_utterance_len, VAD_size]
     # enc_input_tf: [batch_size,max_utterance_len, 1]
-    # WB: [embedding_size, VAD_size]
-    a = 0.001
+    # WB: embedding_size -> VAD_size
     gamma = 0.5
-
+    
     query = tf.expand_dims(query, 1)
     zeros = tf.zeros([embedding.shape[0], 1, embedding.shape[2]], dtype=tf.float32)
     concat = tf.concat([zeros, embedding], 1)
-    x_t_1 = tf.slice(concat, [0, 0, 0], [-1, embedding.shape[1], -1])
+#     x_t_1 = tf.slice(concat, [0, 0, 0], [-1, embedding.shape[1], -1])
+    x_t_1 = embedding
     # x_t_1: [batch_size,max_utterance_len, embedding_size]
-#     beta = tf.tanh(tf.matmul(x_t_1,attention_Wb))
+    # beta: [batch_size,max_utterance_len, VAD_size]
     beta = tf.tanh(attention_Wb.apply(x_t_1)) # beta nan
-    beta = 1
-    # beta: [batch_size,max_utterance_len, 3]
     # yita = enc_input_tf * tf.multiply(1+beta, VAD)
-    yita = enc_input_tf * tf.multiply(1.0,VAD) # [batch_size,max_utterance_len,3]
+    yita = enc_input_tf * tf.multiply(1+beta,VAD) # [batch_size,max_utterance_len,3]
 #     yita = enc_input_tf * VAD
-    yita = gamma * tf.square(tf.norm(yita,ord = 2,axis = 2)) # [batch_size,max_utterance_len]
-    
+#     yita = gamma * tf.square(tf.norm(yita,ord = 2,axis = 2)) # [batch_size,max_utterance_len]
+    yita = gamma * tf.reduce_sum(tf.square(yita),[2])
     # expand the second demension of query, and on that demension duplicate [batch_size, n_hidden_units_dec] when multiply with values
     # keys: h_t_1 query: s_t attention_v: v_a
     e_t_t = tf.reduce_sum(values * query, [2])
@@ -60,10 +59,11 @@ class MyBahdanauAttention(BahdanauAttention):
         # Generate from a truncated normal distribution. 
         # Truncated means values whose magnitude is more than 2 standard deviations from the mean are dropped and re-picked
         # num_units = 128
-        self._attention_v = tf.Variable(tf.truncated_normal([num_units], stddev = 0.1), name = 'attention_v')
-        # _attetion_Wb: [1,enc_input_embed.shape[2],enc_input_VAD.shape[2]]
-#         self._attention_Wb = tf.Variable(tf.truncated_normal([1,256,3], stddev = 0.1), name = 'attention_Wb')
-        self._attention_Wb = tf.layers.Dense(units=3,use_bias=False)
+        self._attention_v = tf.Variable(tf.truncated_normal([num_units], stddev = 0.08), name = 'attention_v')
+        self._attention_Wb = tf.layers.Dense(units=3,
+                                             use_bias=False,
+                                             kernel_initializer = tf.truncated_normal_initializer(stddev = 0.1),
+                                             name='attention_Wb')
 
     def __call__(self, query, state):
         # 首先是使用_prepare_memory函数对memory进行处理，
@@ -74,7 +74,7 @@ class MyBahdanauAttention(BahdanauAttention):
         # keys and query size: ?
         with tf.variable_scope(None, 'my_bahdanau_attention', [query]):
             processed_query = self.query_layer(query) if self.query_layer else query
-            score = _my_affective_attention_score(query, self._values, self._attention_Wb, self.enc_input_embed,self.enc_input_VAD,self.enc_input_tf)
+            score = _my_affective_attention_score(query, self._values, self._attention_Wb, self.enc_input_embed,self.enc_input_VAD,self.enc_input_tf) # affect rich
 #             score = _my_bahdanau_score(processed_query, self._keys, self._attention_v) #e_ij
         alignments = self._probability_fn(score, state) # compute softmax? 
         # probability_fn：A callable function which converts the score to probabilities. 
