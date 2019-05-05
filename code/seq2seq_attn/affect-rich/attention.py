@@ -46,7 +46,8 @@ class MyBahdanauAttention(BahdanauAttention):
                  memory_sequence_length = None,
                  enc_input_embed = None,
                  enc_input_VAD = None,
-                 enc_input_tf = None
+                 enc_input_tf = None,
+                 VAD_mode = None
                  ):
         super(MyBahdanauAttention, self).__init__(
             num_units = num_units,
@@ -56,6 +57,7 @@ class MyBahdanauAttention(BahdanauAttention):
         self.enc_input_embed = enc_input_embed
         self.enc_input_VAD = enc_input_VAD
         self.enc_input_tf = enc_input_tf
+        self.VAD_mode = VAD_mode
         # Generate from a truncated normal distribution. 
         # Truncated means values whose magnitude is more than 2 standard deviations from the mean are dropped and re-picked
         # num_units = 128
@@ -74,8 +76,15 @@ class MyBahdanauAttention(BahdanauAttention):
         # keys and query size: ?
         with tf.variable_scope(None, 'my_bahdanau_attention', [query]):
             processed_query = self.query_layer(query) if self.query_layer else query
-            score = _my_affective_attention_score(query, self._values, self._attention_Wb, self.enc_input_embed,self.enc_input_VAD,self.enc_input_tf) # affect rich
-#             score = _my_bahdanau_score(processed_query, self._keys, self._attention_v) #e_ij
+            if self.VAD_mode:
+                score = _my_affective_attention_score(query, 
+                                                      self._values, 
+                                                      self._attention_Wb,
+                                                      self.enc_input_embed,
+                                                      self.enc_input_VAD,
+                                                      self.enc_input_tf) # affect rich
+            else:
+                score = _my_bahdanau_score(processed_query, self._keys, self._attention_v) #e_ij
         alignments = self._probability_fn(score, state) # compute softmax? 
         # probability_fn：A callable function which converts the score to probabilities. 
         # 计算概率时的函数，必须是一个可调用的函数，默认使用 softmax()

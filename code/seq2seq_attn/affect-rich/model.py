@@ -7,13 +7,14 @@ from tensorflow.contrib.seq2seq import BeamSearchDecoder, dynamic_decode, sequen
 
 class Options(object):
     '''Parameters used by the Seq2SeqAttn model.'''
-    def __init__(self, mode, num_epochs, batch_size, learning_rate, beam_width,
+    def __init__(self, mode,VAD_mode, num_epochs, batch_size, learning_rate, beam_width,
                  corpus_size, max_uttr_len_enc, max_uttr_len_dec, go_index, eos_index,
                  word_embed_size, n_hidden_units_enc, n_hidden_units_dec, attn_depth,
                  word_embeddings):
         super(Options, self).__init__()
 
         self.mode = mode
+        self.VAD_mode = VAD_mode
         self.num_epochs = num_epochs
         self.batch_size = batch_size
         self.learning_rate = learning_rate
@@ -119,7 +120,8 @@ class Seq2SeqAttn(object):
                     memory_sequence_length = tiled_enc_input_len,
                     enc_input_embed = enc_input_embed,
                     enc_input_VAD = enc_input_VAD,
-                    enc_input_tf = enc_input_tf
+                    enc_input_tf = enc_input_tf,
+                    VAD_mode = opts.VAD_mode
                     )
                 cell_dec = tf.nn.rnn_cell.GRUCell(opts.n_hidden_units_dec)
                 # AttentionWrapper: c?
@@ -147,7 +149,10 @@ class Seq2SeqAttn(object):
                     # batch size * max sentence length; binary; 0 for non-word in orignal sentence; mask
                     sequence_mask = tf.sequence_mask(self.dec_input_len,
                         maxlen = opts.max_uttr_len_dec, dtype = tf.float32)
-                    weights = sequence_mask * target_VAD_loss # affective objective function
+                    if opts.VAD_mode:
+                        weights = sequence_mask * target_VAD_loss # affective objective function
+                    else:
+                        weights = sequence_mask
                     # sequence_mask: [batch_size, max_len]
                     # target: [batch_size, max_len] VAD_loss: [batch_size,max_len]
                     # softmax_loss_function(labels=targets, logits=logits_flat) 默认为sparse_softmax_cross_entropy_with_logits
