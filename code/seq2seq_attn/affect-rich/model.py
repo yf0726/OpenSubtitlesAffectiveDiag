@@ -132,8 +132,6 @@ class Seq2SeqAttn(object):
                 # Train
                 if opts.mode == 'TRAIN':
                     dec_initial_state = cell_dec.zero_state(opts.batch_size, tf.float32)
-                    # 和上文算的AttentionWrapper联系？c?
-                    # attention是一个词的context还是一整个encoder句子的？
                     attention = compute_attention(attn_mechanism, dec_initial_state.cell_state) #（1，256）
                     dec_initial_state = dec_initial_state.clone(attention = attention)
                     outputs_dec, _ = tf.nn.dynamic_rnn(cell = cell_dec,
@@ -142,7 +140,6 @@ class Seq2SeqAttn(object):
                         initial_state = dec_initial_state,
                         dtype = tf.float32,
                         scope = vs)
-                    # decoder的结果？
                     # logits: `[batch_size, sequence_length, num_decoder_symbols]` 
                     # The logits correspond to the prediction across all classes at each timestep.
                     logits = output_layer.apply(outputs_dec)

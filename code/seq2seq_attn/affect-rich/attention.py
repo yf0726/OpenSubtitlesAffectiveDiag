@@ -28,10 +28,7 @@ def _my_affective_attention_score(query, values, attention_Wb,embedding, VAD, en
     # x_t_1: [batch_size,max_utterance_len, embedding_size]
     # beta: [batch_size,max_utterance_len, VAD_size]
     beta = tf.tanh(attention_Wb.apply(x_t_1)) # beta nan
-    # yita = enc_input_tf * tf.multiply(1+beta, VAD)
     yita = enc_input_tf * tf.multiply(1+beta,VAD) # [batch_size,max_utterance_len,3]
-#     yita = enc_input_tf * VAD
-#     yita = gamma * tf.square(tf.norm(yita,ord = 2,axis = 2)) # [batch_size,max_utterance_len]
     yita = gamma * tf.reduce_sum(tf.square(yita),[2])
     # expand the second demension of query, and on that demension duplicate [batch_size, n_hidden_units_dec] when multiply with values
     # keys: h_t_1 query: s_t attention_v: v_a
@@ -87,7 +84,6 @@ class MyBahdanauAttention(BahdanauAttention):
                 score = _my_bahdanau_score(processed_query, self._keys, self._attention_v) #e_ij
         alignments = self._probability_fn(score, state) # compute softmax? 
         # probability_fn：A callable function which converts the score to probabilities. 
-        # 计算概率时的函数，必须是一个可调用的函数，默认使用 softmax()
         next_state = alignments # alpha
         # shape=(1, len(encoder_sentence))
         return alignments, next_state # (1,19,256)
