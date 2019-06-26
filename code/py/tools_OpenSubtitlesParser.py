@@ -138,10 +138,20 @@ def SaveSentence(save_path,s_,time_):
             f.write(a)
     return
 
-save_dir = '/Users/yan/Documents/document/EPFL/MA2/semesterprj/'
-tmp_path = '/Users/yan/Documents/document/EPFL/MA2/semesterprj/datasets/OpenSubtitle/2017/331314/6908253.xml'
-s_list,time_ = OpenSubtitleSentence(tmp_path)
-save_path = save_dir+os.path.basename(tmp_path).split('.')[0] + '.txt' 
-if len(s_list) & len(time_): 
-# if s_list and time_ not Null, then save the result
-    SaveSentence(save_path,s_list,time_)
+file = '/Volumes/Files/en/OpenSubtitles/AllFilePath.txt'
+f = open(file)
+files = [line.rstrip('\n') for line in f]
+
+save_dir = '/Volumes/Files/en/OpenSubtitles/txt/'
+for i in range(29000,len(files)):
+    try:
+        if i % 1000 == 0:
+            print(i,i/len(files))
+        tmp_path = files[i]    
+        s_list,time_ = OpenSubtitleSentence(tmp_path)
+        save_path = save_dir+os.path.basename(tmp_path).split('.')[0] + '.txt' 
+        if len(s_list) & len(time_): 
+    # if s_list and time_ not Null, then save the result
+           SaveSentence(save_path,s_list,time_)
+    except:
+        continue
