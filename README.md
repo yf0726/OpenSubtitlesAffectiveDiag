@@ -21,3 +21,5 @@ For affect-rich dialogue generation, since I did not train the model very well (
 2. datasets: in this folder examples of each data set are saved.
 3. papers
 4. results: samples of results of segmentation and dialogue generation.
+
+For more details please check the report.
