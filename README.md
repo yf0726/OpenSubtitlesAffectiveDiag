@@ -1,19 +1,25 @@
-# SemeterProjectSpring19
-Semester project in human interaction group (https://hci-test.epfl.ch/). Topic on natural language processing.
+# Affect-rich Dialogue Generation using OpenSubtitles 2018
+Semester project in human interaction group (https://hci-test.epfl.ch/). Topic on dialogue generation.
 
+## Goal of this project
 
-## Dialogue dataset
-[**Ubuntu Dialog**](http://dataset.cs.mcgill.ca/ubuntu-corpus-1.0/)
-Ryan Lowe, Nissan Pow, Iulian V. Serban and Joelle Pineau, "The Ubuntu Dialogue Corpus: A Large Dataset for Research in Unstructure Multi-Turn Dialogue Systems", SIGDial 2015. [arXiv:1506:08909](https://arxiv.org/pdf/1506.08909.pdf)
+First we extract multi-turn dialogues from OpenSubtitles 2018 (segmentation is based on sentence similarity), then we adopt the affect-rich approach and MMI objective function to improve the basic Seq2Seq model.
 
-Movie Dialog Dataset
+## Results
 
-**Movie DiC Corpus** contains about 130,000 dialogues and 6 million words from movie scripts extracted from the Internet Movie Script Data Collection. One derivation based on this corpus is the Movie Triples Dataset (Serban et al., 2016). There is also the American Film Scripts Corpus and Film Scripts Online Corpus which form the Film Scripts Online Series Corpus, which can be pur- chased. 
+First we create our own corpus:
+1. `OpenSubtitles 2018`: we clean and parse the original OpenSubtitles 2018, and save lines with timestamps in .txt file. Only few samples are uploaded in Github for huge size of whole data (For whole processed OpenSubtitles 2018 please download from: https://drive.google.com/open?id=1ZUJ2J8ukuXhMKXd0SVG1pCZ5ZnJZ9Csc). Not labelled with characters, scenes or dialogue boundaries.
+2. `Scripts data set`: created from 985 scripts and save in './dataset/scripts/script_data_set.csv'. Well labelled with characters, dialogue boundaries and movie names.
 
+For dialogue segmentation part, we validate our method on Cornell Movie Dialog data set and test it on our own scripts data set, and finally we reach p_k 0.262 and 0.295 respectively.
 
-**Filtered Movie Script Corpus**, takes over 1 million utterance-response pairs from web- based script resources and filters them down to 86,000 such pairs. The filtering method limits the extracted utterances to X-Y-X triples, where X is spoken by the same actor and each of the utterance share some semantic similarity. These triples are then decomposed into X-Y and Y-X pair.
-Nio, S. Sakti, G. Neubig, T. Toda, and S. Nakamura. Conversation dialog corpora from television and movie scripts. In
-17th Oriental Chapter of the International Committee for the Co-ordination and Standardization of Speech Databases
-and Assessment Techniques (COCOSDA), pages 1–4, 2014b.
+For affect-rich dialogue generation, since I did not train the model very well (small training set+few epochs) the predictions are not very perfect, but the effect of MMI+VAD embedding is still obvious. The predictions are saved in 'results/predictions.csv'.
 
-[**Cornel Movie Dialogue Dataset**](http://www.cs.cornell.edu/home/llee/data/)
+## Structure of this repo
+
+1. code: all codes are saved in this folder. In code/jupyternb there are notebooks showing the whole process as mentioned in the report; in code/py there are .py files for users to parse and segment OpenSubtitles data; and in code/affect-rich there are codes for affect rich dialogue generation.
+2. datasets: in this folder examples of each data set are saved.
+3. papers
+4. results: samples of results of segmentation and dialogue generation.
+
+For more details please check the report.
