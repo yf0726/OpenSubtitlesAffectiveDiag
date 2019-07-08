@@ -143,7 +143,7 @@ f = open(file)
 files = [line.rstrip('\n') for line in f]
 
 save_dir = '/Volumes/Files/en/OpenSubtitles/txt/'
-for i in range(29000,len(files)):
+for i in range(99000,len(files)):
     try:
         if i % 1000 == 0:
             print(i,i/len(files))
