@@ -17,7 +17,7 @@ The results are saved in Google drive: https://drive.google.com/open?id=1niLIVTB
 In total we have more than 350,000 files in `OpenSubtitles 2018`, and it's hard to process all 350,000 files at once. So I splited the 350,000 files into seven parts, each part has 50,000 files. To segment every 50,000 files, it will need more than 7 hours.
 And currently we have session_segmentation_0.txt (more than 4,000,000 extracted dialogue).
 
-
+### Affect-rich dialogue generation
 For affect-rich dialogue generation, since I did not train the model very well (small training set+few epochs) the predictions are not very perfect, but the effect of MMI+VAD embedding is still obvious. The predictions are saved in 'results/predictions.csv'.
 
 ## Structure of this repo
